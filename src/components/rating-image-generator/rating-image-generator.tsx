@@ -9,18 +9,18 @@ export class RatingImageGenerator {
   componentDidLoad() {
     const canvas = this.el.querySelector("canvas");
     const ctx = canvas.getContext("2d");
-    this.drawStar(ctx, 30, 30);
-    this.drawStar(ctx, 84, 30);
-    this.drawStar(ctx, 138, 30);
-    this.drawStar(ctx, 192, 30);
-    this.drawStar(ctx, 246, 30);
+    this.drawStar(ctx, 30, 30, true);
+    this.drawStar(ctx, 84, 30, false);
+    this.drawStar(ctx, 138, 30, false);
+    this.drawStar(ctx, 192, 30, false);
+    this.drawStar(ctx, 246, 30, false);
 
     ctx.font = "40px Courier"
      // ctx.fillText("Hallo", 210, 75)
 
   }
 
-  drawStar(ctx, cx, cy) {
+  drawStar(ctx, cx, cy, fill) {
     const outerRadius = 25;
     const innerRadius = 10;
     var rot = Math.PI / 2 * 3;
@@ -47,7 +47,17 @@ export class RatingImageGenerator {
     ctx.lineWidth=2;
     ctx.strokeStyle='#000000';
     ctx.stroke();
-    ctx.fillStyle='#cccccc';
+
+    if(fill) {
+      const grd=ctx.createLinearGradient(0,0,0,45);
+      grd.addColorStop(0,"#f4ac41");
+      grd.addColorStop(1,"#f4ee41");
+      ctx.fillStyle=grd;
+    }else{
+      ctx.fillStyle='#cccccc';
+    }
+
+    
     ctx.fill();
 
 }
