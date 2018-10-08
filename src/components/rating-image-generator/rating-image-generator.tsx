@@ -1,4 +1,4 @@
-import { Component, Element } from '@stencil/core';
+import { Component, Element, Prop } from '@stencil/core';
 
 @Component({
   tag: 'rating-image-generator'
@@ -6,24 +6,25 @@ import { Component, Element } from '@stencil/core';
 export class RatingImageGenerator {
   @Element() el: HTMLElement;
 
+  @Prop() rating: number = 5;
+  @Prop() scale: number = 5;
+  @Prop() starSize: number = 40;
+
   componentDidLoad() {
     const canvas = this.el.querySelector("canvas");
     const ctx = canvas.getContext("2d");
-    this.drawStar(ctx, 30, 30, 100);
-    this.drawStar(ctx, 84, 30, 50);
-    this.drawStar(ctx, 138, 30);
-    this.drawStar(ctx, 192, 30);
-    this.drawStar(ctx, 246, 30);
+    
+    for(let i = 0; i < this.scale; i++) {
+      this.drawStar(ctx,  ( 2 * i + 1) * (this.starSize / 2 / 6 * 5), this.starSize / 2, Math.min(1, this.rating - i));
+    }
 
-    ctx.font = "40px Courier"
-     // ctx.fillText("Hallo", 210, 75)
-
+    ctx.font = "60px Courier"
   }
 
   drawStar(ctx, cx, cy, fillPercentage = 0) {
-    const outerRadius = 25;
-    const innerRadius = 10;
-    const maxFillX = cx - 30 + (60 / 100 * fillPercentage);
+    const outerRadius = this.starSize / 2 / 6 * 5;
+    const innerRadius = this.starSize / 6;
+    const maxFillX = cx - (this.starSize / 2) + (this.starSize * fillPercentage);
     var rot = Math.PI / 2 * 3;
     var x = cx;
     var y = cy;
@@ -72,19 +73,15 @@ export class RatingImageGenerator {
       
       
 
-      const grd=ctx.createLinearGradient(0,0,0,45);
+      const grd=ctx.createLinearGradient(0,0,0,this.starSize * 0.75);
       grd.addColorStop(0,"#f4ac41");
       grd.addColorStop(1,"#f4ee41");
       ctx.fillStyle=grd;
       ctx.fill();
 
     }
-
-    
-    
-
 }
   render() {
-    return <div><canvas width={300} height={300}></canvas></div>;
+    return <div><canvas width={this.starSize * this.scale} height={this.starSize}></canvas></div>;
   }
 }

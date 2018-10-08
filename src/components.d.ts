@@ -12,8 +12,16 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface RatingImageGenerator {}
-  interface RatingImageGeneratorAttributes extends StencilHTMLAttributes {}
+  interface RatingImageGenerator {
+    'rating': number;
+    'scale': number;
+    'starSize': number;
+  }
+  interface RatingImageGeneratorAttributes extends StencilHTMLAttributes {
+    'rating'?: number;
+    'scale'?: number;
+    'starSize'?: number;
+  }
 }
 
 declare global {
