@@ -16,7 +16,8 @@ export class RatingImageGenerator {
     this.context = this.el.querySelector("canvas").getContext("2d");
     // Must set font otherwise image won't draw
     this.context.font = "";
-    
+
+
     for(let i = 0; i < this.scale; i++) {
       const xPosition = ( 2 * i + 1) * (this.starSize / 2 );
       const yPosition = this.starSize * 1.10 / 2;
@@ -43,7 +44,10 @@ export class RatingImageGenerator {
   }
 
   fillEmptyBackground() {
-    this.context.fillStyle='#cccccc';
+    const grd=this.context.createLinearGradient(0,0,0,this.starSize * 2);
+    grd.addColorStop(0,"#f4f4f4");
+    grd.addColorStop(1,"#cccccc");
+    this.context.fillStyle=grd;
     this.context.fill();
   }
 
@@ -59,13 +63,14 @@ export class RatingImageGenerator {
     // 60 : 23 makes the right and left spike completly straight
     const outerRadius = this.starSize / 2.0;
     const innerRadius = this.starSize / 2.0 / 60.0 * 23.0;
-    const maxFillX = cx - (this.starSize / 2) + (this.starSize * completePercentage);
-    var rot = Math.PI / 2 * 3;
+    const maxFillX = cx - (this.starSize / 2.0) + (this.starSize * completePercentage);
+    var rot = Math.PI / 2.0 * 3.0;
     var x = cx;
     var y = cy;
-    var step = Math.PI / 5;
+    var step = Math.PI / 5.0;
 
     this.context.beginPath();
+    this.context.lineCap = "round";
     this.context.moveTo(cx, cy - outerRadius)
     for (let i = 0; i < 5; i++) {
         x =  cx + Math.cos(rot) * outerRadius;
