@@ -13,17 +13,19 @@ export class RatingImageGenerator {
   componentDidLoad() {
     const canvas = this.el.querySelector("canvas");
     const ctx = canvas.getContext("2d");
+    const starSize = this.starSize ;
     
     for(let i = 0; i < this.scale; i++) {
-      this.drawStar(ctx,  ( 2 * i + 1) * (this.starSize / 2 / 6 * 5), this.starSize / 2, Math.min(1, this.rating - i));
+      this.drawStar(ctx,  ( 2 * i + 1) * (starSize / 2 ), this.starSize * 1.10 / 2, Math.min(1, this.rating - i));
     }
 
     ctx.font = "60px Courier"
   }
 
   drawStar(ctx, cx, cy, fillPercentage = 0) {
-    const outerRadius = this.starSize / 2 / 6 * 5;
-    const innerRadius = this.starSize / 6;
+    // 60 : 23 makes the right and left spike completly straight
+    const outerRadius = this.starSize / 2.0;
+    const innerRadius = this.starSize / 2.0 / 60.0 * 23.0;
     const maxFillX = cx - (this.starSize / 2) + (this.starSize * fillPercentage);
     var rot = Math.PI / 2 * 3;
     var x = cx;
