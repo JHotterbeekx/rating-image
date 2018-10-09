@@ -1,7 +1,7 @@
 import { Component, Element, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'rating-image-generator'
+  tag: 'rating-image'
 })
 export class RatingImageGenerator {
   @Element() el: HTMLElement;

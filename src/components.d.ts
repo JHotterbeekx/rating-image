@@ -12,12 +12,12 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface RatingImageGenerator {
+  interface RatingImage {
     'rating': number;
     'scale': number;
     'starSize': number;
   }
-  interface RatingImageGeneratorAttributes extends StencilHTMLAttributes {
+  interface RatingImageAttributes extends StencilHTMLAttributes {
     'rating'?: number;
     'scale'?: number;
     'starSize'?: number;
@@ -26,26 +26,26 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
-    'RatingImageGenerator': Components.RatingImageGenerator;
+    'RatingImage': Components.RatingImage;
   }
 
   interface StencilIntrinsicElements {
-    'rating-image-generator': Components.RatingImageGeneratorAttributes;
+    'rating-image': Components.RatingImageAttributes;
   }
 
 
-  interface HTMLRatingImageGeneratorElement extends Components.RatingImageGenerator, HTMLStencilElement {}
-  var HTMLRatingImageGeneratorElement: {
-    prototype: HTMLRatingImageGeneratorElement;
-    new (): HTMLRatingImageGeneratorElement;
+  interface HTMLRatingImageElement extends Components.RatingImage, HTMLStencilElement {}
+  var HTMLRatingImageElement: {
+    prototype: HTMLRatingImageElement;
+    new (): HTMLRatingImageElement;
   };
 
   interface HTMLElementTagNameMap {
-    'rating-image-generator': HTMLRatingImageGeneratorElement
+    'rating-image': HTMLRatingImageElement
   }
 
   interface ElementTagNameMap {
-    'rating-image-generator': HTMLRatingImageGeneratorElement;
+    'rating-image': HTMLRatingImageElement;
   }
 
 
