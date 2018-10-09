@@ -9,6 +9,7 @@ export class RatingImageGenerator {
   @Prop() rating: number = 5;
   @Prop() scale: number = 5;
   @Prop() starSize: number = 40;
+  @Prop() strokeWidth: number = 5;
 
   context;
 
@@ -38,7 +39,7 @@ export class RatingImageGenerator {
   }
 
   drawOuterLine(){
-    this.context.lineWidth=2;
+    this.context.lineWidth = this.strokeWidth;
     this.context.strokeStyle='#000000';
     this.context.stroke();
   }
@@ -60,10 +61,11 @@ export class RatingImageGenerator {
   }
 
   pathStar(cx, cy, completePercentage = 100) {
+    const starSize = this.starSize - (this.strokeWidth * 2);
     // 60 : 23 makes the right and left spike completly straight
-    const outerRadius = this.starSize / 2.0;
-    const innerRadius = this.starSize / 2.0 / 60.0 * 23.0;
-    const maxFillX = cx - (this.starSize / 2.0) + (this.starSize * completePercentage);
+    const outerRadius = starSize / 2.0;
+    const innerRadius = starSize / 2.0 / 60.0 * 23.0;
+    const maxFillX = cx - (starSize / 2.0) + (starSize * completePercentage);
     var rot = Math.PI / 2.0 * 3.0;
     var x = cx;
     var y = cy;

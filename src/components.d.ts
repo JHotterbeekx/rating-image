@@ -16,11 +16,13 @@ export namespace Components {
     'rating': number;
     'scale': number;
     'starSize': number;
+    'strokeWidth': number;
   }
   interface RatingImageAttributes extends StencilHTMLAttributes {
     'rating'?: number;
     'scale'?: number;
     'starSize'?: number;
+    'strokeWidth'?: number;
   }
 }
 
