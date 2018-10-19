@@ -1,7 +1,7 @@
 {
-  "name": "my-component",
+  "name": "rating-image",
   "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "description": "Rating Image",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
   "types": "dist/types/components.d.ts",
@@ -13,7 +13,8 @@
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "prepublish": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {
@@ -21,12 +22,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ionic-team/stencil-component-starter.git"
+    "url": "git+https://github.com/JHotterbeekx/rating-image.git"
   },
-  "author": "Ionic Team",
+  "author": "John Hotterbeekx",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ionic-team/stencil"
+    "url": "https://github.com/JHotterbeekx/rating-image"
   },
-  "homepage": "https://github.com/ionic-team/stencil"
+  "homepage": "https://github.com/JHotterbeekx/rating-image"
 }
