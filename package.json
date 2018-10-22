@@ -1,6 +1,6 @@
 {
   "name": "rating-image",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Rating Image",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
